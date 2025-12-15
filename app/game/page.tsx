@@ -177,7 +177,9 @@ function GameContent() {
   useEffect(() => {
     if (!gameStarted || !config.moving) return;
 
-    const interval = setInterval(() => {
+    let animationFrameId: number;
+    
+    const animate = () => {
       setTargets((prev) =>
         prev.map((target) => {
           let newX = target.x + (target.speedX || 0);
@@ -204,9 +206,11 @@ function GameContent() {
           };
         })
       );
-    }, 16); // ~60 FPS
+      animationFrameId = requestAnimationFrame(animate);
+    };
 
-    return () => clearInterval(interval);
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
   }, [gameStarted, config.moving]);
 
   // Calculate final stats
