@@ -76,7 +76,7 @@ export default function Hero() {
             animate={{ width: 200 }}
             transition={{ duration: 1, delay: 1 }}
           >
-            <div className="h-1 bg-gradient-to-r from-cyan-500 via-violet-500 to-cyan-500" style={{ width: '200px' }} />
+            <div className="h-1 bg-gradient-to-r from-cyan-500 via-violet-500 to-cyan-500 w-full" />
           </motion.div>
         </motion.div>
       </div>
